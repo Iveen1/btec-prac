@@ -1,5 +1,6 @@
 package com.iveen.getawayholidays.controller;
 
+import com.iveen.getawayholidays.domain.entity.EProduct;
 import com.iveen.getawayholidays.dto.ProductDto;
 import com.iveen.getawayholidays.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,12 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("")
-    public Page<ProductDto> getProducts(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        return productService.findAll(page, size);
+    public Page<ProductDto> getProducts(@RequestParam(required = false) EProduct type, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        if (type == null) {
+            return productService.findAll(page, size);
+        } else {
+            return productService.findAllByType(type, page, size);
+        }
     }
 
     @GetMapping("/{id}")

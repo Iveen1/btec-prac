@@ -1,5 +1,6 @@
 package com.iveen.getawayholidays.service.impl;
 
+import com.iveen.getawayholidays.domain.entity.EProduct;
 import com.iveen.getawayholidays.domain.entity.Product;
 import com.iveen.getawayholidays.domain.mapper.ProductMapper;
 import com.iveen.getawayholidays.domain.repository.ProductRepository;
@@ -50,7 +51,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<ProductDto> findAll(int page, int size) {
         Page<Product> entityPage = productRepository.findAll(PageRequest.of(page, size));
+        return new PageImpl<>(
+                productMapper.toDto(entityPage.toList()),
+                PageRequest.of(page, size),
+                entityPage.getTotalElements()
+        );
+    }
 
+    @Override
+    public Page<ProductDto> findAllByType(EProduct type, int page, int size) {
+        Page<Product> entityPage = productRepository.findAllByType(type, PageRequest.of(page, size));
         return new PageImpl<>(
                 productMapper.toDto(entityPage.toList()),
                 PageRequest.of(page, size),

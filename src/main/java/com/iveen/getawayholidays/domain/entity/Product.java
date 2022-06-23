@@ -27,6 +27,9 @@ public class Product {
     private EProduct type;
 
     @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
     private String title;
 
     private Double price;

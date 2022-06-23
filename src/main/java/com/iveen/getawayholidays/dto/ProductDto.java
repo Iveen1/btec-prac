@@ -23,6 +23,10 @@ public class ProductDto {
     private EProduct type;
 
     @NotNull
+    @JsonProperty
+    private String name;
+
+    @NotNull
     @JsonProperty("title")
     private String title;
 

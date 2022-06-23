@@ -1,5 +1,6 @@
 package com.iveen.getawayholidays.service;
 
+import com.iveen.getawayholidays.domain.entity.EProduct;
 import com.iveen.getawayholidays.dto.ProductDto;
 import org.springframework.data.domain.Page;
 
@@ -13,4 +14,6 @@ public interface ProductService {
     void delete(Long id);
 
     Page<ProductDto> findAll(int page, int size);
+
+    Page<ProductDto> findAllByType(EProduct type, int page, int size);
 }
