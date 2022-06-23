@@ -1,2 +1,2 @@
-FRONTEND REPO: [https://github.com/Iveen1/btec-prac-backend](https://github.com/Iveen1/btec-prac-frontend)
+FRONTEND REPO: [https://github.com/Iveen1/btec-prac-frontend](https://github.com/Iveen1/btec-prac-frontend)
 ---
